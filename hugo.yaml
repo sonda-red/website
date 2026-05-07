@@ -1,5 +1,5 @@
 baseURL: "https://sonda.red/"
-title: "sonda.red"
+title: "Sonda Red"
 languageCode: "en"
 defaultContentLanguage: "en"
 
@@ -70,7 +70,7 @@ menu:
       weight: 4
     - name: Kleym
       parent: projects
-      url: /projects/kleym/
+      url: "https://kleym.sonda.red/"
       weight: 1
     - name: Search
       weight: 5
@@ -102,7 +102,7 @@ params:
 
   footer:
     enable: true
-    displayCopyright: false
+    displayCopyright: true
     displayPoweredBy: false
     width: wide
 

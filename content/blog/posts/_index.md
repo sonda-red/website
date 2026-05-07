@@ -3,7 +3,7 @@ title: Notes
 linkTitle: Notes
 type: blog
 sidebar:
-  hide: true
+  hide: false
 cascade:
   type: blog
 ---
