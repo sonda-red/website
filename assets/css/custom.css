@@ -154,3 +154,32 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.lab-about {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.lab-about__photo {
+  display: block;
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(228 228 231);
+  object-fit: cover;
+}
+
+.dark .lab-about__photo {
+  border-color: rgb(63 63 70);
+}
+
+.lab-about__body > :first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .lab-about {
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+  }
+}

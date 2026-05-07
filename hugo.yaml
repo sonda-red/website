@@ -1,4 +1,3 @@
-baseURL: "https://blog.sonda.red/"
 title: "sonda.red"
 languageCode: "en"
 defaultContentLanguage: "en"
@@ -32,21 +31,28 @@ taxonomies:
 
 menu:
   main:
+    - name: Home
+      url: "https://sonda.red/"
+      weight: 1
     - name: Notes
       pageRef: /posts
-      weight: 1
+      weight: 2
     - name: About
       pageRef: /about
-      weight: 2
-    - name: Kleym Docs
-      url: "https://kleym.sonda.red/"
       weight: 3
-    - name: Search
+    - name: Projects
+      identifier: projects
       weight: 4
+    - name: Kleym
+      parent: projects
+      url: "https://kleym.sonda.red/"
+      weight: 1
+    - name: Search
+      weight: 5
       params:
         type: search
     - name: GitHub
-      weight: 5
+      weight: 6
       url: "https://github.com/sonda-red"
       params:
         icon: github
@@ -84,10 +90,6 @@ params:
     flexsearch:
       index: content
       tokenize: forward
-
-  editURL:
-    enable: true
-    base: "https://github.com/sonda-red/blog/edit/main/content"
 
   page:
     width: wide

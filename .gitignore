@@ -1,3 +1,5 @@
 /public/
+/public-root/
+/public-blog/
 /resources/
 /.hugo_build.lock

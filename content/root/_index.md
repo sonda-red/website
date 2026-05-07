@@ -13,21 +13,22 @@ sidebar:
   <p>I use this site to publish experiments, notes, and small open-source projects around workload identity, inference systems, operators, and platform engineering.</p>
   <p><code>sonda.red</code> is the lab wrapper, <code>blog.sonda.red</code> is the notebook and article archive, <code>kleym.sonda.red</code> is dedicated Kleym documentation, and <code>github.com/sonda-red</code> is the source namespace.</p>
   <div class="lab-home__links">
-    <a href="/posts/">Read notes</a>
-    <a href="https://kleym.sonda.red/">Kleym docs</a>
+    <a href="https://blog.sonda.red/posts/">Read notes</a>
+    <a href="https://blog.sonda.red/about/">About me</a>
+    <a href="/projects/kleym/">Kleym docs</a>
     <a href="https://github.com/sonda-red">Source namespace</a>
   </div>
 </div>
 
-## Latest Notes
-
-{{< recent-posts limit="5" >}}
-
 ## Project Map
 
 <div class="lab-projects">
-  <a class="lab-project" href="https://kleym.sonda.red/">
-    <span class="lab-project__name">kleym.sonda.red</span>
+  <a class="lab-project" href="https://blog.sonda.red/">
+    <span class="lab-project__name">blog.sonda.red</span>
+    <span class="lab-project__text">Notebook and article archive for lab notes from things I tested, broke, or changed my mind about.</span>
+  </a>
+  <a class="lab-project" href="/projects/kleym/">
+    <span class="lab-project__name">projects/kleym</span>
     <span class="lab-project__text">Dedicated project documentation for Kleym, an experimental identity compiler for Kubernetes-native inference workloads.</span>
   </a>
   <a class="lab-project" href="https://github.com/sonda-red">
