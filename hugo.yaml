@@ -1,0 +1,110 @@
+baseURL: "https://blog.sonda.red/"
+title: "sonda.red"
+languageCode: "en"
+defaultContentLanguage: "en"
+
+enableRobotsTXT: true
+enableGitInfo: true
+
+pagination:
+  pagerSize: 20
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    style: swapoff
+
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+  author: authors
+
+menu:
+  main:
+    - name: Notes
+      pageRef: /posts
+      weight: 1
+    - name: About
+      pageRef: /about
+      weight: 2
+    - name: Kleym Docs
+      url: "https://kleym.sonda.red/"
+      weight: 3
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/sonda-red"
+      params:
+        icon: github
+
+params:
+  description: "Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering."
+  keywords: "kubernetes,platform engineering,workload identity,spiffe,spire,mlops,inference,operators,homelab"
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/sondrd-64.png
+      link: /
+      width: 28
+      height: 28
+    width: wide
+
+  theme:
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: false
+    displayPoweredBy: false
+    width: wide
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  editURL:
+    enable: true
+    base: "https://github.com/sonda-red/blog/edit/main/content"
+
+  page:
+    width: wide
+
+  blog:
+    list:
+      displayTags: true
+    article:
+      displayPagination: true
+
+  toc:
+    displayTags: true
+
+  imageZoom:
+    enable: true
+
+  highlight:
+    copy:
+      enable: true
+      display: hover

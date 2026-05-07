@@ -1,0 +1,156 @@
+:root {
+  --hextra-max-page-width: 90rem;
+  --hextra-max-navbar-width: 90rem;
+  --hextra-max-footer-width: 90rem;
+}
+
+.hextra-search-input,
+.hextra-search-results {
+  border-radius: 0.5rem;
+}
+
+.lab-home {
+  margin: 1rem 0 3rem;
+  max-width: 58rem;
+}
+
+.lab-home__mark {
+  display: block;
+  margin: 0 0 1.25rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+.lab-home__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: rgb(82 82 91);
+}
+
+.dark .lab-home__eyebrow {
+  color: rgb(161 161 170);
+}
+
+.lab-home__lede {
+  max-width: 48rem;
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 1.18rem + 0.6vw, 1.8rem);
+  line-height: 1.35;
+  font-weight: 650;
+  color: rgb(24 24 27);
+}
+
+.dark .lab-home__lede {
+  color: rgb(244 244 245);
+}
+
+.lab-home__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.lab-home__links a,
+.lab-note,
+.lab-project {
+  border: 1px solid rgb(228 228 231);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.dark .lab-home__links a,
+.dark .lab-note,
+.dark .lab-project {
+  border-color: rgb(63 63 70);
+}
+
+.lab-home__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  padding: 0.5rem 0.8rem;
+  color: rgb(39 39 42);
+  font-weight: 600;
+}
+
+.dark .lab-home__links a {
+  color: rgb(244 244 245);
+}
+
+.lab-home__links a:hover,
+.lab-note:hover,
+.lab-project:hover {
+  border-color: rgb(161 161 170);
+  background: rgb(250 250 250);
+}
+
+.dark .lab-home__links a:hover,
+.dark .lab-note:hover,
+.dark .lab-project:hover {
+  border-color: rgb(113 113 122);
+  background: rgb(39 39 42);
+}
+
+.lab-note-list,
+.lab-projects {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 2.5rem;
+}
+
+.lab-note,
+.lab-project {
+  display: block;
+  padding: 1rem;
+  color: inherit;
+}
+
+.lab-note__meta {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+  color: rgb(113 113 122);
+}
+
+.dark .lab-note__meta {
+  color: rgb(161 161 170);
+}
+
+.lab-note__title,
+.lab-project__name {
+  display: block;
+  font-weight: 650;
+  color: rgb(24 24 27);
+}
+
+.dark .lab-note__title,
+.dark .lab-project__name {
+  color: rgb(244 244 245);
+}
+
+.lab-note__summary,
+.lab-project__text {
+  display: block;
+  margin-top: 0.3rem;
+  color: rgb(82 82 91);
+  line-height: 1.55;
+}
+
+.dark .lab-note__summary,
+.dark .lab-project__text {
+  color: rgb(212 212 216);
+}
+
+@media (min-width: 768px) {
+  .lab-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -8,7 +8,7 @@ tags = ["go", "code", "bash",]
 
 When I first went into DevOps professionally, whenever an automation oppurtunity arose, my first instinct was to use bash for whatever script/tool needed to be built. That's what I've been using for my personal needs and what I'm most familiar with.
 
-I want to learn Go through use though and I'm actively trying to circumvent my instinct for bash, even for simple things. This post has metadata in the beginning you see as formatted title, date, description, tags, etc. They're in the beginning of each <post>.md file like this for example:
+I want to learn Go through use though and I'm actively trying to circumvent my instinct for bash, even for simple things. This post has metadata in the beginning you see as formatted title, date, description, tags, etc. They're in the beginning of each `<post>.md` file like this for example:
 
 ```
 +++
@@ -67,4 +67,3 @@ go build -o ~/.local/bin/wrigo cmd/main.go
 # Generate a new markdown file with metadata
 wrigo
 ```
-

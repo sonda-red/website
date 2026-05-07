@@ -1,4 +1,5 @@
-# Sonda Red Hugo Blog
-# =========================
+# Sonda Red Blog
 
-This is the source code for the Sonda Red Hugo blog. It is a static site generator that uses Hugo to create a blog with posts, pages, and other content.
+This repository builds `blog.sonda.red`, my personal notebook for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering.
+
+The site uses Hugo with the Hextra theme via `github.com/imfing/hextra`.
