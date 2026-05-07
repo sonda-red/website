@@ -57,7 +57,7 @@ menu:
     - name: About
       url: /about/
       weight: 4
-    - name: Kleym
+    - name: kleym
       parent: projects
       url: "https://kleym.sonda.red/"
       weight: 1
