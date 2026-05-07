@@ -15,17 +15,6 @@ module:
     min: "0.146.0"
   imports:
     - path: github.com/imfing/hextra
-  mounts:
-    - source: content/root
-      target: content
-    - source: content/blog/posts
-      target: content/notes
-    - source: assets
-      target: assets
-    - source: layouts
-      target: layouts
-    - source: static
-      target: static
 
 markup:
   goldmark:
