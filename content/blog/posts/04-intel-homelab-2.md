@@ -35,6 +35,7 @@ In the first part of this series, I walked through the hardware choices and the 
 
 ---
 
+
 > Some personal notes follow below, if you want to skip them, just scroll down to the next section or up to the table of contents to get to wherever you want to go.
 
 ## 00 Philosophy: Get to Kubernetes fast and dirty, because I want to run some damned AI finally!
