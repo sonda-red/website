@@ -1,0 +1,5 @@
+# Cloudflare Pages reads this file from the generated public/ directory.
+# These rules preserve legacy blog.sonda.red/posts links after moving notes to sonda.red/notes.
+/posts https://sonda.red/notes/ 301
+/posts/ https://sonda.red/notes/ 301
+/posts/* https://sonda.red/notes/:splat 301
