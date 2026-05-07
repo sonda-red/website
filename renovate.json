@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "dependencyDashboard": true,
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "description": "Keep Hugo theme modules together.",
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackageNames": [
+        "github.com/imfing/hextra"
+      ],
+      "groupName": "hugo theme modules",
+      "postUpdateOptions": [
+        "gomodTidy"
+      ]
+    },
+    {
+      "description": "Track the Hugo version required by hugo.yaml.",
+      "matchPackageNames": [
+        "gohugoio/hugo"
+      ],
+      "groupName": "hugo"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update module.hugoVersion.min in hugo.yaml.",
+      "managerFilePatterns": [
+        "/^hugo\\.yaml$/"
+      ],
+      "matchStrings": [
+        "min:\\s+\"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "gohugoio/hugo",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.*)$",
+      "versioningTemplate": "semver"
+    }
+  ]
+}
