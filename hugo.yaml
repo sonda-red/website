@@ -1,0 +1,126 @@
+baseURL: "https://sonda.red/"
+title: "Sonda Red"
+languageCode: "en"
+defaultContentLanguage: "en"
+
+enableRobotsTXT: true
+enableGitInfo: true
+
+pagination:
+  pagerSize: 20
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    style: swapoff
+
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+  author: authors
+
+permalinks:
+  taxonomy:
+    authors: /notes/authors/
+    categories: /notes/categories/
+    series: /notes/series/
+    tags: /notes/tags/
+  term:
+    authors: /notes/authors/:slug/
+    categories: /notes/categories/:slug/
+    series: /notes/series/:slug/
+    tags: /notes/tags/:slug/
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Projects
+      identifier: projects
+      url: /projects/
+      weight: 2
+    - name: Notes
+      url: /notes/
+      weight: 3
+    - name: About
+      url: /about/
+      weight: 4
+    - name: kleym
+      parent: projects
+      url: "https://kleym.sonda.red/"
+      weight: 1
+    - name: Search
+      weight: 5
+      params:
+        type: search
+    - name: GitHub
+      weight: 6
+      url: "https://github.com/sonda-red"
+      params:
+        icon: github
+
+params:
+  description: "Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering."
+  keywords: "kubernetes,platform engineering,workload identity,spiffe,spire,mlops,inference,operators,homelab"
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/sondrd-64.png
+      link: /
+      width: 28
+      height: 28
+    width: wide
+
+  theme:
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: wide
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  page:
+    width: wide
+
+  blog:
+    list:
+      displayTags: true
+    article:
+      displayPagination: true
+
+  toc:
+    displayTags: true
+
+  imageZoom:
+    enable: true
+
+  highlight:
+    copy:
+      enable: true
+      display: hover
