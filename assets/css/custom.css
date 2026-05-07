@@ -23,10 +23,10 @@
 
 .lab-home__eyebrow {
   margin: 0 0 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 400;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: rgb(82 82 91);
 }
 
