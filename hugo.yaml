@@ -70,6 +70,11 @@ menu:
       url: "https://github.com/sonda-red"
       params:
         icon: github
+    - name: LinkedIn
+      weight: 7
+      url: "https://linkedin.com/in/daskalovk"
+      params:
+        icon: linkedin
 
 params:
   description: "Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering."
