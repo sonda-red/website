@@ -9,7 +9,7 @@ tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "int
 
 [![Intel AI Inference Platform MVP](/images/post-05/thumb.png)](/images/post-05/thumb.png)
 
-> Link to Part 2: [Laying the Cluster Foundation](https://blog.sonda.red/posts/04-intel-homelab-2/)
+> Link to Part 2: [Laying the Cluster Foundation](/notes/04-intel-homelab-2/)
 
 > Disclaimer: This is not production guidance and it is not sponsored. It documents what actually ran in my homelab with Arc GPUs and k3s. Please double-check before you roll it into your own setup. 
  
@@ -107,7 +107,7 @@ Let's download it from HuggingFace into a volume then? That's the solution, righ
 1. Gave MinIO a large PV on the GPU node.
 2. Set Harbor to use S3 as backend.
 
-Both of these steps are described in more detail in the previous [post](https://blog.sonda.red/posts/04-intel-homelab-2/#more-or-less-self-explanatory-infrastructure-components).
+Both of these steps are described in more detail in the previous [post](/notes/04-intel-homelab-2/#more-or-less-self-explanatory-infrastructure-components).
 
 3. Pinned Harbor to the GPU node with node affinity to avoid cross-node traffic.
 4. Pushed models as KitOps ModelKits to Harbor and referenced them from vLLM.
@@ -249,7 +249,7 @@ metadata:
 
 ## 03 GPU Allocation
 
-I thought I had it all figured out with the classic Intel device operator and GPU plugin that I described in my [previous post](https://blog.sonda.red/posts/04-intel-homelab-2/#intel-gpu-specifics), but I ran into issues when trying to run tensor parallel workloads.
+I thought I had it all figured out with the classic Intel device operator and GPU plugin that I described in my [previous post](/notes/04-intel-homelab-2/#intel-gpu-specifics), but I ran into issues when trying to run tensor parallel workloads.
 
 When researching for an alternative, I found the rather new Kubernetes [Dynamic Resource Allocation (DRA)](https://kubernetes.io/docs/concepts/scheduling-eviction/dra/) API that acts similarly to [dynamic volume provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/), in which you use PersistentVolumeClaims to claim storage capacity from storage classes and request the claimed capacity in your Pods.
 

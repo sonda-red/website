@@ -1,33 +1,36 @@
 # Sonda Red Web Presence
 
-This repository builds both `sonda.red` and `blog.sonda.red` from the same branch.
+This repository builds the canonical `sonda.red` site from the `improvements` branch.
 
-The shared Hugo and Hextra configuration lives in `hugo.yaml`. Domain-specific overlays select different content mounts and output directories:
+The Hugo and Hextra configuration lives in `hugo.yaml`. The canonical site mounts the landing pages from `content/root` and the existing article files from `content/blog/posts` as `/notes/`.
 
-- `hugo.root.yaml` builds the landing site from `content/root` into `public-root`
-- `hugo.blog.yaml` builds the blog from `content/blog` into `public-blog`
+`blog.sonda.red` is now a legacy redirect host only. Its Cloudflare Pages project should deploy `redirects/blog._redirects` as `public/_redirects`; it should not build the Hugo site.
 
 ## Local Builds
 
 ```bash
 make root-build
-make blog-build
 ```
 
 For local preview:
 
 ```bash
 make root-serve
-make blog-serve
 ```
 
 ## Cloudflare Pages
 
 Use two Cloudflare Pages projects pointing at the same GitHub repo and branch.
 
-| Project | Domain | Build command | Output directory |
+| Project | Domain | Build command | Publish directory |
 | --- | --- | --- | --- |
-| `sonda-web` | `sonda.red` | `make root-build` | `public-root` |
-| `sonda-blog` | `blog.sonda.red` | `make blog-build` | `public-blog` |
+| `sonda-web` | `sonda.red` | `make root-build` | `public` |
+| `sonda-blog` | `blog.sonda.red` | `mkdir -p public && cp redirects/blog._redirects public/_redirects && printf "Redirecting to https://sonda.red/notes/\n" > public/index.html` | `public` |
 
-Both builds reuse the same Hextra theme module, shared navigation, shared layouts, and shared assets.
+The canonical `make root-build` target runs:
+
+```bash
+hugo --config hugo.yaml --cacheDir /tmp/sonda-red-hugo-cache --destination public --cleanDestinationDir --gc --minify
+```
+
+The legacy redirects should remain `302` until production paths are verified. After verification, change them to `301`.

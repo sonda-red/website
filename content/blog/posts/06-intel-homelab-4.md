@@ -7,7 +7,7 @@ categories = ["lab notes"]
 tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "intel-arc", "kubernetes", "k3s", "llm-d", "inference", "deepseek", "vllm"]
 +++
 
-> Link to Part 3: [Intel AI Inference Platform MVP](https://blog.sonda.red/posts/05-intel-homelab-3/)
+> Link to Part 3: [Intel AI Inference Platform MVP](/notes/05-intel-homelab-3/)
 
 > Disclaimer: This is not production guidance and it is not sponsored. It documents what actually ran in my homelab with Arc GPUs and k3s. Please double-check before you roll it into your own setup.
 
@@ -31,7 +31,7 @@ tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "int
 
 ## 00 Scale a vLLM replica to 2 and see what happens
 
-In [Part 3](https://blog.sonda.red/posts/05-intel-homelab-3/) I ended with a working Intel only inference MVP:
+In [Part 3](/notes/05-intel-homelab-3/) I ended with a working Intel only inference MVP:
 
 * Models packaged as ModelKits via KitOps and stored in Harbor
 * A shared PVC populated by `kitops-init` for fast local model loading

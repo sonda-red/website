@@ -11,10 +11,10 @@ sidebar:
   <p class="lab-home__eyebrow">Personal engineering lab</p>
   <p class="lab-home__lede">Sonda Red is my personal engineering lab for Kubernetes-native AI infrastructure.</p>
   <p>I use this site to publish experiments, notes, and small open-source projects around workload identity, inference systems, operators, and platform engineering.</p>
-  <p><code>sonda.red</code> is the lab wrapper, <code>blog.sonda.red</code> is the notebook and article archive, <code>kleym.sonda.red</code> is dedicated Kleym documentation, and <code>github.com/sonda-red</code> is the source namespace.</p>
+  <p><code>sonda.red</code> is the lab wrapper and canonical site, <code>/notes/</code> is the notebook and article archive, <code>kleym.sonda.red</code> is dedicated Kleym documentation, and <code>github.com/sonda-red</code> is the source namespace.</p>
   <div class="lab-home__links">
-    <a href="https://blog.sonda.red/posts/">Read notes</a>
-    <a href="https://blog.sonda.red/about/">About me</a>
+    <a href="/notes/">Read notes</a>
+    <a href="/about/">About me</a>
     <a href="/projects/kleym/">Kleym docs</a>
     <a href="https://github.com/sonda-red">Source namespace</a>
   </div>
@@ -23,8 +23,8 @@ sidebar:
 ## Project Map
 
 <div class="lab-projects">
-  <a class="lab-project" href="https://blog.sonda.red/">
-    <span class="lab-project__name">blog.sonda.red</span>
+  <a class="lab-project" href="/notes/">
+    <span class="lab-project__name">notes</span>
     <span class="lab-project__text">Notebook and article archive for lab notes from things I tested, broke, or changed my mind about.</span>
   </a>
   <a class="lab-project" href="/projects/kleym/">

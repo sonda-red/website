@@ -1,5 +1,5 @@
 {{- $limit := .Get "limit" | default 5 | int -}}
-{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $posts := where site.RegularPages "Section" "notes" -}}
 <div class="lab-note-list">
   {{- range first $limit $posts.ByDate.Reverse -}}
     <a class="lab-note" href="{{ .RelPermalink }}">

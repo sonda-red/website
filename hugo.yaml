@@ -1,3 +1,4 @@
+baseURL: "https://sonda.red/"
 title: "sonda.red"
 languageCode: "en"
 defaultContentLanguage: "en"
@@ -14,6 +15,17 @@ module:
     min: "0.146.0"
   imports:
     - path: github.com/imfing/hextra
+  mounts:
+    - source: content/root
+      target: content
+    - source: content/blog/posts
+      target: content/notes
+    - source: assets
+      target: assets
+    - source: layouts
+      target: layouts
+    - source: static
+      target: static
 
 markup:
   goldmark:
@@ -29,23 +41,36 @@ taxonomies:
   tag: tags
   author: authors
 
+permalinks:
+  taxonomy:
+    authors: /notes/authors/
+    categories: /notes/categories/
+    series: /notes/series/
+    tags: /notes/tags/
+  term:
+    authors: /notes/authors/:slug/
+    categories: /notes/categories/:slug/
+    series: /notes/series/:slug/
+    tags: /notes/tags/:slug/
+
 menu:
   main:
     - name: Home
-      url: "https://sonda.red/"
+      url: /
       weight: 1
-    - name: Notes
-      pageRef: /posts
-      weight: 2
-    - name: About
-      pageRef: /about
-      weight: 3
     - name: Projects
       identifier: projects
+      url: /projects/
+      weight: 2
+    - name: Notes
+      url: /notes/
+      weight: 3
+    - name: About
+      url: /about/
       weight: 4
     - name: Kleym
       parent: projects
-      url: "https://kleym.sonda.red/"
+      url: /projects/kleym/
       weight: 1
     - name: Search
       weight: 5

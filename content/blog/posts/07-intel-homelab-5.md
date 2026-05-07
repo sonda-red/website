@@ -9,7 +9,7 @@ tags = ["k8s", "mlops", "intel", "homelab", "devops", "kubernetes", "k3s", "llm-
 
 [![Why llm-d pushed me out of Ingress and into agentgateway](/images/post-07/ingress-gateway-api.jpg)](/images/post-07/ingress-gateway-api.jpg)
 
-> Link to Part 4: [Intel AI Inference Platform MVP 2 with llm-d](https://blog.sonda.red/posts/06-intel-homelab-4/)
+> Link to Part 4: [Intel AI Inference Platform MVP 2 with llm-d](/notes/06-intel-homelab-4/)
 
 > Disclaimer: This is not production guidance and it is not sponsored. It documents what actually ran in my homelab. Please double-check before you roll it into your own setup.
 

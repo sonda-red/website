@@ -7,7 +7,7 @@ categories = ["lab notes"]
 tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "intel-arc", "kubernetes", "k3s"]
 +++
 
-> Link to Part 1: [Assembling an Intel-Powered Lab](https://blog.sonda.red/posts/03-intel-homelab-1/)
+> Link to Part 1: [Assembling an Intel-Powered Lab](/notes/03-intel-homelab-1/)
 
 > Disclaimer: This is not production guidance and it is not sponsored. It documents what actually ran in my homelab with Arc GPUs and k3s, so please double check before you roll it into your own setup.
 
@@ -362,4 +362,3 @@ Hopefully, this is where the fun begins. I want to experiment a bit with schedul
 - Loading bigger models on both GPUs 
 
 ---
-

@@ -1,0 +1,7 @@
+/ https://sonda.red/notes/ 302
+/posts/* https://sonda.red/notes/:splat 302
+/tags/* https://sonda.red/notes/tags/:splat 302
+/categories/* https://sonda.red/notes/categories/:splat 302
+/series/* https://sonda.red/notes/series/:splat 302
+/authors/* https://sonda.red/notes/authors/:splat 302
+/* https://sonda.red/notes/:splat 302

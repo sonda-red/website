@@ -7,7 +7,8 @@ Sonda Red is not a company, startup, vendor, or product platform. It is my perso
 The site should make the relationship clear:
 
 - `sonda.red` is the personal lab wrapper.
-- `blog.sonda.red` is the notebook and article archive.
+- `sonda.red/notes/` is the notebook and article archive.
+- `blog.sonda.red` is a legacy redirect host for old note links.
 - `kleym.sonda.red` is dedicated project documentation for Kleym.
 - `github.com/sonda-red` is the source namespace.
 
