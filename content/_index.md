@@ -22,7 +22,7 @@ sidebar:
     <span class="lab-project__name">Notes</span>
     <span class="lab-project__text">Notebook and article archive for lab notes from things I tested, broke, or changed my mind about.</span>
   </a>
-  <a class="lab-project" href="/projects/kleym/">
+  <a class="lab-project" href="https://kleym.sonda.red/">
     <span class="lab-project__name">projects/kleym</span>
     <span class="lab-project__text">Dedicated project documentation for kleym, an experimental identity compiler for Kubernetes-native inference workloads.</span>
   </a>
