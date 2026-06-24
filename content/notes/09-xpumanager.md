@@ -20,7 +20,6 @@ tags = ["k8s", "intel", "gpu", "xpumanager", "xpumd", "dra", "kubernetes", "home
 * [04 The new shape in my cluster](#04-the-new-shape-in-my-cluster)
 * [05 The metric name situation](#05-the-metric-name-situation)
 * [06 What this removes from my life](#06-what-this-removes-from-my-life)
-* [References](#references)
 
 ---
 
@@ -28,11 +27,11 @@ tags = ["k8s", "intel", "gpu", "xpumanager", "xpumd", "dra", "kubernetes", "home
 
 This is a small update, but it removes one of the uglier pieces of my GPU observability setup.
 
-Intel XPU Manager has been one of those pieces in my homelab that I needed, but did not particularly enjoy maintaining.
+[Intel XPU Manager](https://github.com/intel/xpumanager) has been one of those pieces in my homelab that I needed, but did not particularly enjoy maintaining.
 
 I wanted GPU telemetry from the Intel Arc cards in my Kubernetes cluster. For a while, the implementation was very ugly.
 
-Now XPU Manager 2.0 ships an upstream OCI Helm chart:
+Now [XPU Manager 2.0](https://github.com/intel/xpumanager/releases/tag/v2.0.0) ships an upstream OCI [Helm chart](https://github.com/intel/xpumanager/tree/v2.0.0/xpumd/charts/xpumd):
 
 ```text
 oci://ghcr.io/intel/xpumanager/charts/xpumd
@@ -50,7 +49,7 @@ ghcr.io/intel/xpumanager/xpumd:v2.0.0
 
 The old setup in my GitOps repo was not something I was proud of.
 
-I had a Flux `GitRepository` pointed at `intel/xpumanager`, then a Flux `Kustomization` pointed into the upstream Kubernetes daemonset base.
+I had a Flux `GitRepository` pointed at `intel/xpumanager`, then a Flux `Kustomization` pointed into the upstream Kubernetes DaemonSet base.
 
 On top of that I patched the DaemonSet hard enough to make it fit my cluster:
 
@@ -66,11 +65,13 @@ On top of that I patched the DaemonSet hard enough to make it fit my cluster:
 
 The image was the worst part.
 
-I had a custom image under `sonda-red/custom-images` because the public container path I had been using looked stale for my needs.
+I had a custom image under `sonda-red/custom-images` because the public container image I had been using had gone stale for my needs.
+
+There was also an [upstream issue about regularly updating the DockerHub image](https://github.com/intel/xpumanager/issues/121), which was a good enough signal that I should stop treating that path as dependable for this setup.
 
 That was not some clever platform abstraction. It was just a workaround that became infrastructure.
 
-The Dockerfile was doing more than I want a lab image to do:
+The Dockerfile did more than I want a lab image to do:
 
 * build on Ubuntu 24.04
 * install a Python virtual environment
@@ -99,7 +100,7 @@ ghcr.io/sonda-red/xpumanager@sha256:...
 
 That is useful when you need to unblock yourself. It is not where I want the lab to stay.
 
-This is the kind of thing that works, then becomes normal, then becomes suspicious because you cannot quite remember all the reasons it exists.
+This is the kind of thing that works, becomes normal, and then becomes suspicious because you cannot quite remember why all of it exists.
 
 ---
 
@@ -109,7 +110,7 @@ The other reason my old setup became awkward was DRA.
 
 I have written about DRA a few times in this series already, so I will not re-explain the whole model here. The specific part that matters for this note is monitor access.
 
-Intel's GPU DRA documentation includes a monitor pod example using a `ResourceClaimTemplate` with monitor-style access.
+Intel's [GPU DRA monitor deployment documentation](https://github.com/intel/intel-resource-drivers-for-kubernetes/tree/main/doc/gpu#gpu-monitor-deployment) includes a [monitor pod example](https://github.com/intel/intel-resource-drivers-for-kubernetes/blob/main/deployments/gpu/examples/monitor-pod-inline.yaml) using a `ResourceClaimTemplate` with monitor-style access.
 
 The YAML is verbose, but the important part is the claim shape:
 
@@ -149,7 +150,7 @@ spec:
       resourceClaimTemplateName: monitor-claim
 ```
 
-That is the important distinction:
+The important distinction is:
 
 * a normal inference pod should request the GPU resources it needs
 * a monitor needs visibility into devices on the node
@@ -171,7 +172,7 @@ The problem was that I was assembling that shape myself by patching upstream man
 
 ## 03 What changed upstream
 
-XPU Manager 2.0 changes the shape quite a bit.
+XPU Manager 2.0 changes the shape quite a bit. The upstream [XPUM 1.x vs 2.x changes](https://github.com/intel/xpumanager/blob/v2.0.0/xpumd/docs/CHANGES.md) cover the broader redesign; the part that mattered for my cluster was the exporter and deployment shape.
 
 The old 1.x world had a C++ daemon and a separate Python exporter path. Metrics came out with XPUM-specific names like:
 
@@ -276,9 +277,9 @@ config:
         exporters: [intelxpuinfo, prometheus]
 ```
 
-In my lab I hardcode the hostname because `sonda-core` is the GPU node.
+In my lab, I hardcode the hostname because `sonda-core` is the GPU node.
 
-In a larger cluster I would use GPU node labels, for example labels from Node Feature Discovery, instead of binding the monitor DaemonSet to a specific node name.
+In a larger cluster, I would use GPU node labels, for example labels from Node Feature Discovery, instead of binding the monitor DaemonSet to a specific node name.
 
 With these values enabled, the chart now creates the pieces I used to maintain locally:
 
@@ -295,7 +296,7 @@ With these values enabled, the chart now creates the pieces I used to maintain l
 
 My old local dashboard queried `xpum_*` metrics. That dashboard had to go because XPUMD 2.x exposes different metric names.
 
-I switched Grafana provisioning to the tagged upstream 2.0 dashboard:
+I switched Grafana provisioning to the tagged upstream 2.0.0 dashboard:
 
 ```text
 https://raw.githubusercontent.com/intel/xpumanager/refs/tags/v2.0.0/xpumd/charts/xpumd/json/dashboard.json
@@ -305,7 +306,9 @@ After switching the dashboard provisioning, the new panels came back like this:
 
 [![XPUMD 2.0 Grafana dashboard](/images/post-09/new-xpumanager-dashboard.png)](/images/post-09/new-xpumanager-dashboard.png)
 
-Examples of the new shape:
+---
+
+Examples of the new metric shape:
 
 ```promql
 avg by (pci_bdf) (hw_gpu_utilization_ratio{node="$Node"})
@@ -327,7 +330,7 @@ The practical migration note is simple: the pods can be healthy while the dashbo
 
 ## 06 What this removes from my life
 
-This is the full list of things I got to delete or stop caring about:
+This is what I got to delete or stop caring about:
 
 * my custom `ghcr.io/sonda-red/xpumanager` image
 * the custom Dockerfile that rebuilt XPUM 1.x around Ubuntu, Python, Gunicorn, and Intel userspace packages
@@ -338,17 +341,9 @@ This is the full list of things I got to delete or stop caring about:
 * the old `xpum_*` dashboard
 * the Renovate custom manager that tracked XPU Manager as a Git tag
 
-That is the part that makes me happy.
-
-This whole homelab project has a pattern: I build something that barely works, then slowly replace the weird bits as the upstream projects catch up or as I understand the problem better.
-
 I do not regret the custom image. It got me telemetry when I needed telemetry.
 
-But I am very glad it is not special anymore.
-
-The best infrastructure change is often the one that removes your cleverness.
-
-In this case, the final result is boring:
+In this case, the final result is boring, but that is a good thing. I can delete the workaround and move on.
 
 ```text
 Flux HelmRelease
@@ -358,15 +353,3 @@ Flux HelmRelease
   -> chart-managed ServiceMonitor
   -> upstream XPUMD 2 dashboard
 ```
-
----
-
-## References
-
-* [Intel XPU Manager](https://github.com/intel/xpumanager)
-* [XPU Manager 2.0.0 release](https://github.com/intel/xpumanager/releases/tag/v2.0.0)
-* [XPUM 1.x vs 2.x changes](https://github.com/intel/xpumanager/blob/v2.0.0/xpumd/docs/CHANGES.md)
-* [XPUMD Helm chart](https://github.com/intel/xpumanager/tree/v2.0.0/xpumd/charts/xpumd)
-* [Intel GPU DRA monitor deployment](https://github.com/intel/intel-resource-drivers-for-kubernetes/tree/main/doc/gpu#gpu-monitor-deployment)
-* [Intel GPU DRA monitor pod example](https://github.com/intel/intel-resource-drivers-for-kubernetes/blob/main/deployments/gpu/examples/monitor-pod-inline.yaml)
-* [intel/xpumanager#121: Create CI/CD to Regularly Update DockerHub](https://github.com/intel/xpumanager/issues/121)
