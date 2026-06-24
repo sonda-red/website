@@ -1,7 +1,7 @@
 +++
 authors = ["Kalin Daskalov"]
 title = "Lab Notes: XPU Manager 2.0 finally lets me delete my custom image"
-date = "2026-06-25"
+date = "2026-06-24"
 description = "A short lab note on replacing my custom Intel XPU Manager deployment with the upstream XPUMD 2.0 Helm chart and image."
 categories = ["lab notes"]
 tags = ["k8s", "intel", "gpu", "xpumanager", "xpumd", "dra", "kubernetes", "homelab", "fluxcd", "observability"]
