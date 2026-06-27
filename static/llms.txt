@@ -1,0 +1,37 @@
+# Sonda Red
+
+Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering.
+
+This is not a company, vendor, product platform, or AI governance platform. Content and projects are by Kalin Daskalov unless otherwise noted.
+
+## Canonical Site Sections
+
+- Home: https://sonda.red/
+- Notes archive: https://sonda.red/notes/
+- About Kalin Daskalov: https://sonda.red/about/
+- Kleym project documentation: https://kleym.sonda.red/
+- Source namespace: https://github.com/sonda-red
+
+## Main Topics
+
+- Kubernetes-native AI infrastructure
+- Intel Arc GPU homelab operations
+- vLLM, llm-d, OpenWebUI, and inference routing
+- Dynamic Resource Allocation for Kubernetes GPUs
+- SPIFFE, SPIRE, workload identity, and controller-based registration
+- Kubernetes operators and controller-runtime
+- FluxCD, GitOps, observability, and platform engineering
+
+## Selected Notes
+
+- https://sonda.red/notes/09-xpumanager/ - Replacing a custom Intel XPU Manager deployment with the upstream XPUMD 2.0 Helm chart and image.
+- https://sonda.red/notes/08-kleym-inference-identity/ - Building Kleym, a Kubernetes operator that maps inference resources to deterministic SPIFFE identity registration.
+- https://sonda.red/notes/07-intel-homelab-5/ - Moving inference routing from Ingress toward Gateway API and agentgateway after llm-d made scheduling part of the routing problem.
+- https://sonda.red/notes/06-intel-homelab-4/ - Adding llm-d to a Kubernetes inference stack so vLLM replicas can be routed with inference-aware scheduling.
+- https://sonda.red/notes/05-intel-homelab-3/ - Building a Kubernetes inference MVP with Intel Arc GPUs, vLLM, DRA, ModelKits, OpenWebUI, and observability.
+- https://sonda.red/notes/04-intel-homelab-2/ - Scaffolding the k3s cluster foundation for the Intel GPU homelab.
+- https://sonda.red/notes/03-intel-homelab-1/ - Assembling the Intel-powered homelab hardware and explaining why the setup exists.
+
+## Legacy Host
+
+blog.sonda.red is a legacy redirect host for old note links. Canonical note URLs are under https://sonda.red/notes/.
