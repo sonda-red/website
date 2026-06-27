@@ -78,6 +78,7 @@ menu:
 
 params:
   title: "Sonda Red"
+  locale: "en-US"
   description: "Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering."
   keywords: "kubernetes,platform engineering,workload identity,spiffe,spire,mlops,inference,operators,homelab"
   images:
