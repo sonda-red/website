@@ -2,7 +2,7 @@
 authors = ["Kalin Daskalov"]
 title = "init"
 date = "2023-07-17"
-description = "hello from my blog"
+description = "Opening note for the Sonda Red archive before the site became a technical notebook for Kubernetes and infrastructure lab work."
 tags = [
     "personal",
     "text",

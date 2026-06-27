@@ -2,12 +2,15 @@
 authors = ["Kalin Daskalov"]
 title = "Lab Notes: Intel AI Inference Platform MVP"
 date = "2025-09-18"
-description = "With the cluster in place, I built the second layer of the stack."
+description = "A lab note on building a Kubernetes inference MVP with Intel Arc GPUs, vLLM, DRA, ModelKits, Harbor, OpenWebUI, Prometheus, and FluxCD."
 categories = ["lab notes"]
 tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "intel-arc", "kubernetes", "k3s"]
+images = ["/images/post-05/thumb.png"]
 +++
 
 [![Intel AI Inference Platform MVP](/images/post-05/thumb.png)](/images/post-05/thumb.png)
+
+This note documents the first stable inference layer in my Intel Arc Kubernetes homelab: model packaging, GPU allocation, OpenAI-compatible serving, OpenWebUI, and the observability needed to keep the stack understandable.
 
 > Link to Part 2: [Laying the Cluster Foundation](/notes/04-intel-homelab-2/)
 

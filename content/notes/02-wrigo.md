@@ -2,7 +2,7 @@
 authors = ["Kalin Daskalov"]
 title = "wrigo"
 date = "2023-09-04"
-description = "helper tool for new hugo posts"
+description = "A short note on writing Wrigo, a small Go CLI that generates Hugo post front matter instead of relying on shell scripts."
 tags = ["go", "code", "bash",]
 +++
 

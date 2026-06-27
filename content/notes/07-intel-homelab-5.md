@@ -2,12 +2,15 @@
 authors = ["Kalin Daskalov"]
 title = "Lab Notes: Why llm-d pushed me out of Ingress (and into agentgateway)"
 date = "2026-04-14"
-description = "When LLM routing became a scheduling problem, ingress stopped being enough."
+description = "A lab note on moving Kubernetes inference routing from Ingress to Gateway API and agentgateway after llm-d made scheduling part of request routing."
 categories = ["lab notes"]
 tags = ["k8s", "mlops", "intel", "homelab", "devops", "kubernetes", "k3s", "llm-d", "gateway-api", "agentgateway", "fluxcd", "openwebui", "vllm"]
+images = ["/images/post-07/ingress-gateway-api.jpg"]
 +++
 
 [![Why llm-d pushed me out of Ingress and into agentgateway](/images/post-07/ingress-gateway-api.jpg)](/images/post-07/ingress-gateway-api.jpg)
+
+This note documents why my inference path moved away from Ingress after llm-d changed the routing problem from "which Service" to "which model-serving backend should handle this request right now."
 
 > Link to Part 4: [Intel AI Inference Platform MVP 2 with llm-d](/notes/06-intel-homelab-4/)
 

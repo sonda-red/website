@@ -5,7 +5,10 @@ date = "2026-06-24"
 description = "A short lab note on replacing my custom Intel XPU Manager deployment with the upstream XPUMD 2.0 Helm chart and image."
 categories = ["lab notes"]
 tags = ["k8s", "intel", "gpu", "xpumanager", "xpumd", "dra", "kubernetes", "homelab", "fluxcd", "observability"]
+images = ["/images/post-09/new-xpumanager-dashboard.png"]
 +++
+
+This note documents the cleanup path from a patched custom XPU Manager deployment to the upstream XPUMD 2.0 Helm chart for Intel GPU telemetry in my Kubernetes homelab.
 
 > Disclaimer: This is lab documentation, not production guidance. It describes what changed in my cluster and why I am happy to delete a workaround.
 

@@ -1,0 +1,112 @@
+{{- $description := partial "utils/page-description.html" . | plainify | htmlUnescape -}}
+{{- $language := site.Params.locale | default site.Language.Lang | default "en" -}}
+{{- $personID := printf "%s#person-kalin-daskalov" site.BaseURL -}}
+{{- $websiteID := printf "%s#website" site.BaseURL -}}
+{{- $webpageID := printf "%s#webpage" .Permalink -}}
+{{- $images := slice -}}
+{{- with .Params.images -}}
+  {{- range . -}}
+    {{- $images = $images | append (. | absURL) -}}
+  {{- end -}}
+{{- else -}}
+  {{- with site.Params.images -}}
+    {{- range . -}}
+      {{- $images = $images | append (. | absURL) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "index.xml" | absURL }}" />
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} notes" href="{{ "notes/index.xml" | absURL }}" />
+
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" "Kalin Daskalov"
+  "url" ("/about/" | absURL)
+  "image" ("/images/about/kalin-daskalov.jpg" | absURL)
+  "jobTitle" "DevOps Engineer"
+  "sameAs" (slice "https://github.com/sonda-red" "https://linkedin.com/in/daskalovk" "https://kleym.sonda.red/")
+  "knowsAbout" (slice "Kubernetes" "platform engineering" "workload identity" "SPIFFE" "SPIRE" "inference systems" "Kubernetes operators" "Intel Arc GPUs" "homelab infrastructure")
+-}}
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" $websiteID
+  "url" site.BaseURL
+  "name" site.Title
+  "description" site.Params.description
+  "author" (dict "@id" $personID)
+  "publisher" (dict "@id" $personID)
+  "inLanguage" $language
+-}}
+{{- $pageType := "WebPage" -}}
+{{- if eq .RelPermalink "/notes/" -}}
+  {{- $pageType = "CollectionPage" -}}
+{{- end -}}
+{{- $webpage := dict
+  "@type" $pageType
+  "@id" $webpageID
+  "url" .Permalink
+  "name" .Title
+  "description" $description
+  "isPartOf" (dict "@id" $websiteID)
+  "inLanguage" $language
+-}}
+{{- if eq .RelPermalink "/notes/" -}}
+  {{- $webpage = merge $webpage (dict
+    "about" (slice "Kubernetes-native AI infrastructure" "workload identity" "inference systems" "operators" "platform engineering")
+  ) -}}
+{{- end -}}
+{{- $graph := slice $person $website -}}
+{{- if and .IsPage (eq .Section "notes") -}}
+  {{- $articleID := printf "%s#blogposting" .Permalink -}}
+  {{- $article := dict
+    "@type" "BlogPosting"
+    "@id" $articleID
+    "mainEntityOfPage" (dict "@id" $webpageID)
+    "url" .Permalink
+    "headline" .Title
+    "description" $description
+    "datePublished" (.Date.Format "2006-01-02T15:04:05-07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+    "author" (dict "@id" $personID)
+    "publisher" (dict "@id" $personID)
+    "isPartOf" (dict "@id" $websiteID)
+    "inLanguage" $language
+  -}}
+  {{- with .Params.categories -}}
+    {{- $article = merge $article (dict "articleSection" (index . 0)) -}}
+  {{- end -}}
+  {{- with .Params.tags -}}
+    {{- $article = merge $article (dict "keywords" (delimit . ", ")) -}}
+  {{- end -}}
+  {{- if gt (len $images) 0 -}}
+    {{- $article = merge $article (dict "image" $images) -}}
+  {{- end -}}
+  {{- $webpage = merge $webpage (dict
+    "datePublished" (.Date.Format "2006-01-02T15:04:05-07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+    "author" (dict "@id" $personID)
+    "mainEntity" (dict "@id" $articleID)
+  ) -}}
+  {{- $graph = $graph | append $article -}}
+{{- end -}}
+{{- $graph = $graph | append $webpage -}}
+{{- if not .IsHome -}}
+  {{- $items := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) -}}
+  {{- if eq .Section "notes" -}}
+    {{- $items = $items | append (dict "@type" "ListItem" "position" 2 "name" "Notes" "item" ("/notes/" | absURL)) -}}
+    {{- if ne .RelPermalink "/notes/" -}}
+      {{- $items = $items | append (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $items = $items | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink) -}}
+  {{- end -}}
+  {{- $graph = $graph | append (dict
+    "@type" "BreadcrumbList"
+    "@id" (printf "%s#breadcrumb" .Permalink)
+    "itemListElement" $items
+  ) -}}
+{{- end -}}
+{{- $schema := dict "@context" "https://schema.org" "@graph" $graph -}}
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") | safeJS }}</script>
