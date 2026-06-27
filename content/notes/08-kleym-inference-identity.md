@@ -7,6 +7,8 @@ categories = ["lab notes"]
 tags = ["k8s", "spiffe", "spire", "kubernetes", "operators", "controllers", "inference", "llm-d", "homelab"]
 +++
 
+This note introduces Kleym, my experimental Kubernetes operator for turning inference intent into deterministic SPIFFE identity registration through SPIRE Controller Manager.
+
 > Disclaimer: This is lab documentation, not production guidance. It explains why I built Kleym, what boundary it covers today, and what I still need to test.
 
 ---

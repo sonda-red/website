@@ -2,10 +2,13 @@
 authors = ["Kalin Daskalov"]
 title = "Lab Notes: Intel AI Inference Platform MVP 2 with llm-d"
 date = "2025-12-08"
-description = "Load balancing inference."
+description = "A lab note on adding llm-d to a Kubernetes inference stack so vLLM replicas can be routed by inference-aware scheduling instead of plain Service load balancing."
 categories = ["lab notes"]
 tags = ["k8s", "mlops", "intel", "homelab", "devops", "gpu", "arc", "a770", "intel-arc", "kubernetes", "k3s", "llm-d", "inference", "deepseek", "vllm"]
+images = ["/images/post-06/llm-d-full.png"]
 +++
+
+This note extends the Intel Arc inference MVP with llm-d, Gateway API Inference Extension concepts, and the routing layer needed once vLLM replicas stop behaving like interchangeable HTTP pods.
 
 > Link to Part 3: [Intel AI Inference Platform MVP](/notes/05-intel-homelab-3/)
 

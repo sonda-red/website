@@ -1,6 +1,6 @@
 baseURL: "https://sonda.red/"
 title: "Sonda Red"
-languageCode: "en"
+locale: "en-US"
 defaultContentLanguage: "en"
 
 enableRobotsTXT: true
@@ -77,8 +77,11 @@ menu:
         icon: linkedin
 
 params:
+  title: "Sonda Red"
   description: "Sonda Red is Kalin Daskalov's personal engineering lab for Kubernetes-native AI infrastructure, workload identity, inference systems, operators, and platform engineering."
   keywords: "kubernetes,platform engineering,workload identity,spiffe,spire,mlops,inference,operators,homelab"
+  images:
+    - "/images/og/sonda-red.png"
 
   navbar:
     displayTitle: true
