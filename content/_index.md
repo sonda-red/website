@@ -7,7 +7,7 @@ sidebar:
 ---
 
 <div class="lab-home">
-  <img class="lab-home__mark" src="/images/sondrd-64.png" alt="Sonda Red logo" width="64" height="64">
+  <img class="lab-home__mark" src="/android-chrome-192x192.png" srcset="/android-chrome-192x192.png 192w, /android-chrome-512x512.png 512w" sizes="64px" alt="Sonda Red logo" width="64" height="64">
   <p class="lab-home__eyebrow">A personal engineering lab for Kubernetes-native AI infrastructure.</p>
   <p>This space is used to publish experiments, notes, and small open-source projects around workload identity, inference systems, Kubernetes operators and platform engineering.</p>
 

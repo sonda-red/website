@@ -6,11 +6,11 @@ This is not a company, vendor, product platform, or AI governance platform. Cont
 
 ## Canonical Site Sections
 
-- Home: https://sonda.red/
-- Notes archive: https://sonda.red/notes/
-- About Kalin Daskalov: https://sonda.red/about/
-- Kleym project documentation: https://kleym.sonda.red/
-- Source namespace: https://github.com/sonda-red
+- [Home](https://sonda.red/)
+- [Notes archive](https://sonda.red/notes/)
+- [About Kalin Daskalov](https://sonda.red/about/)
+- [Kleym project documentation](https://kleym.sonda.red/)
+- [Source namespace](https://github.com/sonda-red)
 
 ## Main Topics
 
@@ -24,13 +24,13 @@ This is not a company, vendor, product platform, or AI governance platform. Cont
 
 ## Selected Notes
 
-- https://sonda.red/notes/09-xpumanager/ - Replacing a custom Intel XPU Manager deployment with the upstream XPUMD 2.0 Helm chart and image.
-- https://sonda.red/notes/08-kleym-inference-identity/ - Building Kleym, a Kubernetes operator that maps inference resources to deterministic SPIFFE identity registration.
-- https://sonda.red/notes/07-intel-homelab-5/ - Moving inference routing from Ingress toward Gateway API and agentgateway after llm-d made scheduling part of the routing problem.
-- https://sonda.red/notes/06-intel-homelab-4/ - Adding llm-d to a Kubernetes inference stack so vLLM replicas can be routed with inference-aware scheduling.
-- https://sonda.red/notes/05-intel-homelab-3/ - Building a Kubernetes inference MVP with Intel Arc GPUs, vLLM, DRA, ModelKits, OpenWebUI, and observability.
-- https://sonda.red/notes/04-intel-homelab-2/ - Scaffolding the k3s cluster foundation for the Intel GPU homelab.
-- https://sonda.red/notes/03-intel-homelab-1/ - Assembling the Intel-powered homelab hardware and explaining why the setup exists.
+- [XPU Manager 2.0 cleanup](https://sonda.red/notes/09-xpumanager/) - Replacing a custom Intel XPU Manager deployment with the upstream XPUMD 2.0 Helm chart and image.
+- [Kleym inference identity](https://sonda.red/notes/08-kleym-inference-identity/) - Building Kleym, a Kubernetes operator that maps inference resources to deterministic SPIFFE identity registration.
+- [Moving inference routing out of Ingress](https://sonda.red/notes/07-intel-homelab-5/) - Moving inference routing from Ingress toward Gateway API and agentgateway after llm-d made scheduling part of the routing problem.
+- [Adding llm-d to the inference stack](https://sonda.red/notes/06-intel-homelab-4/) - Adding llm-d to a Kubernetes inference stack so vLLM replicas can be routed with inference-aware scheduling.
+- [Intel AI inference MVP](https://sonda.red/notes/05-intel-homelab-3/) - Building a Kubernetes inference MVP with Intel Arc GPUs, vLLM, DRA, ModelKits, OpenWebUI, and observability.
+- [Laying the cluster foundation](https://sonda.red/notes/04-intel-homelab-2/) - Scaffolding the k3s cluster foundation for the Intel GPU homelab.
+- [Assembling the Intel-powered lab](https://sonda.red/notes/03-intel-homelab-1/) - Assembling the Intel-powered homelab hardware and explaining why the setup exists.
 
 ## Legacy Host
 
