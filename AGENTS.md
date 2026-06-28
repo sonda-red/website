@@ -69,3 +69,20 @@ If a diagram is authored in D2, Graphviz, or another text diagram tool, it is fi
 Avoid adding new diagram build targets, shortcode wrappers, CSS centering rules, or Hugo asset loading just to render diagrams in a blog article. Add that machinery only when explicitly requested or when a diagram is too large to maintain inline.
 
 Use fenced `text`, not `bash`, for rendered ASCII/Unicode diagrams. Use `bash` only for real shell snippets.
+
+## Article SEO handling
+
+When creating or substantially changing an article under `content/notes/`, explicitly check whether the existing SEO patterns need to change.
+
+At minimum, review:
+
+- front matter `title`, `description`, `authors`, `date`, `categories`, `tags`, and `images`
+- whether the article has a useful Open Graph image and whether that image should appear in the sitemap image entries
+- whether `layouts/_partials/custom/head-end.html` still emits appropriate `BlogPosting`, breadcrumb, author, article tag, and notes archive JSON-LD for the new article shape
+- whether `layouts/sitemap.xml` still includes the right canonical pages and excludes low-value taxonomy/archive URLs
+- whether `layouts/robots.txt` still points at the canonical XML sitemap
+- whether any legacy `blog.sonda.red` redirect behavior in `redirects/blog._redirects` needs to change for moved or renamed note URLs
+
+Do not add custom SEO machinery for a single article by default. Prefer improving the shared Hugo templates or front matter only when the new article exposes a real gap in the existing discovery patterns.
+
+Before handoff for article work, build the site when practical and inspect the rendered page head plus `public/sitemap.xml` for the changed article.

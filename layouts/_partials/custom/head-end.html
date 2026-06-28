@@ -1,5 +1,6 @@
 {{- $description := partial "utils/page-description.html" . | plainify | htmlUnescape -}}
 {{- $language := site.Params.locale | default site.Language.Lang | default "en" -}}
+{{- $ogLocale := replace $language "-" "_" -}}
 {{- $personID := printf "%s#person-kalin-daskalov" site.BaseURL -}}
 {{- $websiteID := printf "%s#website" site.BaseURL -}}
 {{- $webpageID := printf "%s#webpage" .Permalink -}}
@@ -18,6 +19,17 @@
 
 <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "index.xml" | absURL }}" />
 <link rel="alternate" type="application/rss+xml" title="{{ site.Title }} notes" href="{{ "notes/index.xml" | absURL }}" />
+<link rel="sitemap" type="application/xml" title="{{ site.Title }} sitemap" href="{{ "sitemap.xml" | absURL }}" />
+<meta name="author" content="Kalin Daskalov" />
+<meta property="og:locale" content="{{ $ogLocale }}" />
+{{- if and .IsPage (eq .Section "notes") }}
+<meta property="article:author" content="Kalin Daskalov" />
+  {{- with .Params.tags }}
+    {{- range . }}
+<meta property="article:tag" content="{{ . }}" />
+    {{- end }}
+  {{- end }}
+{{- end }}
 
 {{- $person := dict
   "@type" "Person"
@@ -38,6 +50,7 @@
   "author" (dict "@id" $personID)
   "publisher" (dict "@id" $personID)
   "inLanguage" $language
+  "about" (slice "Kubernetes-native AI infrastructure" "workload identity" "inference systems" "Kubernetes operators" "platform engineering")
 -}}
 {{- $pageType := "WebPage" -}}
 {{- if eq .RelPermalink "/notes/" -}}
@@ -60,6 +73,10 @@
 {{- $graph := slice $person $website -}}
 {{- if and .IsPage (eq .Section "notes") -}}
   {{- $articleID := printf "%s#blogposting" .Permalink -}}
+  {{- $minutes := div (add .WordCount 199) 200 -}}
+  {{- if lt $minutes 1 -}}
+    {{- $minutes = 1 -}}
+  {{- end -}}
   {{- $article := dict
     "@type" "BlogPosting"
     "@id" $articleID
@@ -73,6 +90,10 @@
     "publisher" (dict "@id" $personID)
     "isPartOf" (dict "@id" $websiteID)
     "inLanguage" $language
+    "isAccessibleForFree" true
+    "genre" "Technical lab note"
+    "wordCount" .WordCount
+    "timeRequired" (printf "PT%dM" $minutes)
   -}}
   {{- with .Params.categories -}}
     {{- $article = merge $article (dict "articleSection" (index . 0)) -}}
@@ -90,6 +111,29 @@
     "mainEntity" (dict "@id" $articleID)
   ) -}}
   {{- $graph = $graph | append $article -}}
+{{- else if eq .RelPermalink "/notes/" -}}
+  {{- $items := slice -}}
+  {{- range $index, $page := where site.RegularPages "Section" "notes" -}}
+    {{- $items = $items | append (dict
+      "@type" "ListItem"
+      "position" (add $index 1)
+      "url" $page.Permalink
+      "name" $page.Title
+      "description" ($page.Description | plainify | htmlUnescape)
+    ) -}}
+  {{- end -}}
+  {{- if gt (len $items) 0 -}}
+    {{- $listID := printf "%s#notes-list" .Permalink -}}
+    {{- $webpage = merge $webpage (dict "mainEntity" (dict "@id" $listID)) -}}
+    {{- $graph = $graph | append (dict
+      "@type" "ItemList"
+      "@id" $listID
+      "name" "Sonda Red notes"
+      "itemListOrder" "https://schema.org/ItemListOrderDescending"
+      "numberOfItems" (len $items)
+      "itemListElement" $items
+    ) -}}
+  {{- end -}}
 {{- end -}}
 {{- $graph = $graph | append $webpage -}}
 {{- if not .IsHome -}}
